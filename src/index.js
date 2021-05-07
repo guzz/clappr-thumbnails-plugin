@@ -1,4 +1,4 @@
-import {UICorePlugin, Styler, Events, template, $} from 'clappr'
+import {UICorePlugin, Styler, Events, template, $} from '@clappr/core'
 import {Promise} from 'es6-promise-polyfill'
 import pluginHtml from './public/scrub-thumbnails.html'
 import pluginStyle from './public/style.sass'
