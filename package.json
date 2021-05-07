@@ -55,5 +55,8 @@
   },
   "dependencies": {
     "es6-promise-polyfill": "^1.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
