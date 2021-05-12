@@ -26,19 +26,19 @@ const plugins = [
 
 const mainBundle = {
   input: 'src/index.js',
-  external: ['@clappr/core'],
+  external: ['@guzzj/clappr-core'],
   output: [
     {
       name: 'ScrubThumbnailsPlugin',
       file: pkg.main,
       format: 'umd',
-      globals: { '@clappr/core': 'Clappr' },
+      globals: { '@guzzj/clappr-core': 'Clappr' },
     },
     !!process.env.MINIMIZE && {
       name: 'ScrubThumbnailsPlugin',
       file: 'dist/clappr-thumbnails-plugin.min.js',
       format: 'umd',
-      globals: { '@clappr/core': 'Clappr' },
+      globals: { '@guzzj/clappr-core': 'Clappr' },
       plugins: terser(),
     },
   ],
@@ -47,12 +47,12 @@ const mainBundle = {
 
 const esmBundle = {
   input: 'src/index.js',
-  external: ['@clappr/core', /@babel\/runtime/],
+  external: ['@guzzj/clappr-core', /@babel\/runtime/],
   output: {
     name: 'ScrubThumbnailsPlugin',
     file: pkg.module,
     format: 'esm',
-    globals: { '@clappr/core': 'Clappr' },
+    globals: { '@guzzj/clappr-core': 'Clappr' },
   },
   plugins: [
     babelPluginForESMBundle({

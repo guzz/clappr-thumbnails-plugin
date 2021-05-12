@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@clappr/core')) :
-  typeof define === 'function' && define.amd ? define(['@clappr/core'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@guzzj/clappr-core')) :
+  typeof define === 'function' && define.amd ? define(['@guzzj/clappr-core'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ScrubThumbnailsPlugin = factory(global.Clappr));
-}(this, (function (core) { 'use strict';
+}(this, (function (clapprCore) { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -540,7 +540,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(pluginHtml);
+        return clapprCore.template(pluginHtml);
       }
       /* 
        * Helper to build the "thumbs" property for a sprite sheet.
@@ -558,14 +558,14 @@
       key: "bindEvents",
       value: function bindEvents() {
         // Clappr 0.3 support
-        if (core.Events.CORE_ACTIVE_CONTAINER_CHANGED) {
-          this.listenTo(this.core, core.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.rebindEvents);
+        if (clapprCore.Events.CORE_ACTIVE_CONTAINER_CHANGED) {
+          this.listenTo(this.core, clapprCore.Events.CORE_ACTIVE_CONTAINER_CHANGED, this.rebindEvents);
         }
 
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, this._onMouseMove);
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, this._onMouseLeave);
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_RENDERED, this._init);
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_CONTAINERCHANGED, this._onMediaControlContainerChanged);
+        this.listenTo(this.core.mediaControl, clapprCore.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, this._onMouseMove);
+        this.listenTo(this.core.mediaControl, clapprCore.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, this._onMouseLeave);
+        this.listenTo(this.core.mediaControl, clapprCore.Events.MEDIACONTROL_RENDERED, this._init);
+        this.listenTo(this.core.mediaControl, clapprCore.Events.MEDIACONTROL_CONTAINERCHANGED, this._onMediaControlContainerChanged);
       }
     }, {
       key: "rebindEvents",
@@ -577,11 +577,11 @@
       key: "_bindContainerEvents",
       value: function _bindContainerEvents() {
         if (this._oldContainer) {
-          this.stopListening(this._oldContainer, core.Events.CONTAINER_TIMEUPDATE, this._renderPlugin);
+          this.stopListening(this._oldContainer, clapprCore.Events.CONTAINER_TIMEUPDATE, this._renderPlugin);
         }
 
         this._oldContainer = this.core.mediaControl.container;
-        this.listenTo(this.core.mediaControl.container, core.Events.CONTAINER_TIMEUPDATE, this._renderPlugin);
+        this.listenTo(this.core.mediaControl.container, clapprCore.Events.CONTAINER_TIMEUPDATE, this._renderPlugin);
       }
     }, {
       key: "_onMediaControlContainerChanged",
@@ -813,10 +813,10 @@
       key: "_buildImg",
       value: function _buildImg(thumb, height) {
         var scaleFactor = height / thumb.h;
-        var $img = core.$("<img />").addClass("thumbnail-img").attr("src", thumb.url); // the container will contain the image positioned so that the correct sprite
+        var $img = clapprCore.$("<img />").addClass("thumbnail-img").attr("src", thumb.url); // the container will contain the image positioned so that the correct sprite
         // is visible
 
-        var $container = core.$("<div />").addClass("thumbnail-container");
+        var $container = clapprCore.$("<div />").addClass("thumbnail-container");
         $container.css("width", thumb.w * scaleFactor);
         $container.css("height", height);
         $img.css({
@@ -992,7 +992,7 @@
           'backdropHeight': this._getOptions().backdropHeight,
           'spotlightHeight': this._getOptions().spotlightHeight
         }));
-        this.$el.append(core.Styler.getStyleFor(css_248z)); // cache dom references
+        this.$el.append(clapprCore.Styler.getStyleFor(css_248z)); // cache dom references
 
         this._$spotlight = this.$el.find(".spotlight");
         this._$backdrop = this.$el.find(".backdrop");
@@ -1023,7 +1023,7 @@
     }]);
 
     return ScrubThumbnailsPlugin;
-  }(core.UICorePlugin);
+  }(clapprCore.UICorePlugin);
 
   return ScrubThumbnailsPlugin;
 

@@ -3,7 +3,7 @@ import _createClass from '@babel/runtime/helpers/createClass';
 import _inherits from '@babel/runtime/helpers/inherits';
 import _possibleConstructorReturn from '@babel/runtime/helpers/possibleConstructorReturn';
 import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
-import { template, Events, $, Styler, UICorePlugin } from '@clappr/core';
+import { template, Events, $, Styler, UICorePlugin } from '@guzzj/clappr-core';
 import { Promise as Promise$1 } from 'es6-promise-polyfill';
 
 var pluginHtml = "<% if (backdropHeight) { %>\n<div class=\"backdrop\" style=\"height: <%= backdropHeight%>px;\">\n\t<div class=\"carousel\"></div>\n</div>\n<% }; %>\n<% if (spotlightHeight) { %>\n<div class=\"spotlight\" style=\"height: <%= spotlightHeight%>px;\"></div>\n<% }; %>\n";
