@@ -1,10 +1,12 @@
-import {UICorePlugin, Styler, Events, template, $} from '@guzzj/clappr-core'
-import {Promise} from 'es6-promise-polyfill'
+import { UICorePlugin, Styler, Events, template, $, version } from '@guzzj/clappr-core'
+import { Promise } from 'es6-promise-polyfill'
 import pluginHtml from './public/scrub-thumbnails.html'
 import pluginStyle from './public/style.sass'
 
 export default class ScrubThumbnailsPlugin extends UICorePlugin {
   get name() { return 'scrub-thumbnails' }
+
+  get supportedVersion() { return { min: version } }
 
   get attributes() {
     return {
